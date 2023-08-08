@@ -1,0 +1,5 @@
+package com.example.myapplication
+
+
+val Token="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJDb3VyaWVyIEFiZG8iLCJVc2VySUQiOiIzMTY1IiwiUm9sZUlEIjoiNSIsImV4cCI6MTY5MjA4MjkzOSwiaXNzIjoiR1QiLCJhdWQiOiJHVCJ9.HXogeBKgPoDL4ZTbKmO_XA1XUkovTWhEeMekNPgNQxM"
+val BaseUrl="http://dev.redexpresseg.com/"
