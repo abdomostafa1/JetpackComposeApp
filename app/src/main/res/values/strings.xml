@@ -1,3 +1,153 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Jetpack Compose App</string>
+
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+
+    <string name="paid_tax">Paid Tax</string>
+    <string name="confirm">Confirm</string>
+    <string name="call">Call</string>
+    <string name="ok">OK</string>
+    <string name="deliver">Deliver</string>
+    <string name="pick_up">PickUp</string>
+    <string name="notes">Notes</string>
+    <string name="cancel">Cancel</string>
+    <string name="report_problem">Report a Problem</string>
+    <string name="shipments">Shipment</string>
+    <string name="log_out">logout</string>
+    <string name="receive">Receive</string>
+
+    <string name="not_delivered">Order will not be delivered to customer</string>
+    <string name="refused_fees_paid">Order Refused by customer but shipping fees paid </string>
+    <string name="refused_fees_not_paid">Order Refused by customer but shipping fees not paid </string>
+
+    <string name="partial_delivery_message">Please Enter Paid Amount</string>
+
+    <string name="ready_for_delivery">Ready for delivery </string>
+    <string name="assigned_for_delivery">Assigned for delivery</string>
+    <string name="out_for_delivery">Out For Delivery</string>
+    <string name="delivered">Delivered</string>
+    <string name="canceled">Cancelled</string>
+    <string name="ready_for_pickup">Ready For Pickup </string>
+    <string name="assigned_for_pickup">Assigned For pickup</string>
+    <string name="picked_up">Picked up</string>
+    <string name="at_warehouse">At Warehouse</string>
+    <string name="cancelled_pickup">Cancelled Pickup</string>
+    <string name="postponed">Postponed</string>
+    <string name="archive">Archive</string>
+    <string name="paid_to_vendor">Paid To Vendor</string>
+    <string name="ready_for_return">Ready For Return</string>
+    <string name="assigned_for_return">Assigned For Return</string>
+    <string name="out_for_return">Out For Return</string>
+    <string name="returned">Returned</string>
+    <string name="unknown">unknown</string>
+    <string name="deliver_shipments">Deliver Shipments</string>
+    <string name="date">Date:</string>
+    <string name="hello">Hello,</string>
+    <string name="ship">Ship</string>
+    <string name="status">Status</string>
+
+    <string name="customer_name">Customer Name</string>
+    <string name="area">Area</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+
+
+    <string name="name">Name</string>
+    <string name="number">Number</string>
+    <string name="number2">Number2</string>
+    <string name="address">Address</string>
+    <string name="number_of_items">Number of Items</string>
+    <string name="number_of_orders">Number of Orders</string>
+    <string name="cash_on_delivery">Cash on Delivery</string>
+    <string name="shipping_fees_cancellation">Shipping fees in case of cancellation</string>
+    <string name="fragile">Fragile</string>
+    <string name="open_package">Open Package</string>
+    <string name="partial_delivery">Partial Delivery Shipment</string>
+    <string name="deliver_shipment">Delivery Shipments</string>
+    <string name="receive_shipment">Receive Shipments</string>
+    <string name="confirm_receive">Confirm Receive</string>
+    <string name="pick_shipment">Pickup Requests</string>
+    <string name="items_pickup">Delivery Pickup</string>
+    <string name="stock_pickup">Stock Pickup</string>
+    <string name="did_customer_pay_you">Did the customer pay you</string>
+    <string name="red_recommendation">Red Recommendation</string>
+    <string name="items_included">Items Included</string>
+    <string name="orders_included">Orders Included</string>
+    <string name="size">Size</string>
+    <string name="price">Price</string>
+    <string name="upload_photo">Upload Photo</string>
+    <string name="no_reply">No Reply</string>
+    <string name="postpone">Postpone</string>
+    <string name="ready_time">Ready time</string>
+    <string name="last_time_available">Last Time Available</string>
+    <string name="receive_different_price">Receive with different price</string>
+    <string name="warehouse">Warehouse</string>
+    <string name="are_you_sure">Are you sure ?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="deliver_to_warehouse">Deliver to Warehouse</string>
+    <string name="vendor_name">Vendor Name</string>
+    <string name="confirm_cash_delivery">Confirm Cash Delivery</string>
+    <string name="enter_vendor_code">Enter the 4-Digit Code from Vendor</string>
+    <string name="cancelled_shipments_return">Cancelled Shipments Return</string>
+    <string name="cash_delivery">Cash Delivery</string>
+    <string name="confirm_pickup">Confirm Pickup</string>
+    <string name="did_you_receive">Did you receive</string>
+    <string name="not_ready">Not Ready</string>
+    <string name="order_cancelled">Order(s) Cancelled</string>
+    <string name="quantity">Quantity</string>
+    <string name="total_fees">Total Fees</string>
+    <string name="turn_device_location">turn on device location</string>
+    <string name="gps_message">GPS is not enabled. Do you want to go to Settings menu ?</string>
+    <string name="settings">Settings</string>
+    <string name="no_internet_connection">No Internet Connection</string>
+    <string name="enable_wifi_or_mobile_data">Please enable Wi-Fi or mobile data to access the internet.</string>
+    <string name="select_langauge">Select language</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="content">Content</string>
+    <string name="current_password">current password</string>
+    <string name="new_password">new password</string>
+    <string name="confirm_new_password">confirm new password</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="update_password">Update password</string>
+    <string name="error_passwords_do_not_match">Passwords do not match</string>
+    <string name="error_password_min_length">Password must be at least 6 characters</string>
+
+    <string name="shipment_delivered">shipment has been successfully delivered</string>
+    <string name="picked_up_successfully">Picked up successfully</string>
+    <string name="error_message">An error occurred.</string>
+    <string name="of">of</string>
+    <string name="EGP">EGP</string>
+    <string name="items">items</string>
+    <string name="problem_sent">The problem has been sent.</string>
+
+    <string name="select_shipment">Select Shipment</string>
+    <string name="select_items">Select items</string>
+    <string name="no_shipments">There are no shipments</string>
+
+    <string name="number_of_delivered_items">Determine Number of Delivered Items</string>
+    <string name="number_of_received_fees">Write the Received Fees</string>
+    <string name="enter_valid_number">Enter a valid number</string>
+    <string name="customer_address">Customer address</string>
+
 </resources>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Jetpack Compose App</string>
+    <string name="prompt_email">البريد الإلكتروني</string>
+    <string name="prompt_password">كلمة السر</string>
+    <string name="action_sign_in">تسجيل الدخول أو الاشتراك</string>
+    <string name="action_sign_in_short">تسجيل الدخول</string>
+    <string name="welcome">"مرحبًا!"</string>
+    <string name="invalid_username">اسم المستخدم غير صحيح </string>
+    <string name="invalid_password">يجب أن تحتوي كلمة السر على أكثر من 5 حروف</string>
+    <string name="login_failed">"فشل تسجيل الدخول"</string>
+
+    <string name="paid_tax">الضريبة المدفوعة</string>
+    <string name="confirm">تأكيد</string>
+    <string name="call">اتصال</string>
+    <string name="ok">موافق</string>
+    <string name="deliver">توصيل</string>
+    <string name="pick_up">استلام</string>
+    <string name="receive">استلام</string>
+    <string name="notes">ملاحظات</string>
+    <string name="cancel">إلغاء</string>
+    <string name="report_problem">الإبلاغ عن مشكلة</string>
+    <string name="shipments">الشحنة</string>
+    <string name="log_out">تسجيل الخروج</string>
+
+    <string name="not_delivered">لن يتم توصيل الطلب إلى العميل</string>
+    <string name="refused_fees_paid">تم رفض الطلب من قبل العميل ولكن تم دفع رسوم الشحن</string>
+    <string name="refused_fees_not_paid">تم رفض الطلب من قبل العميل ولم يتم دفع رسوم الشحن</string>
+
+    <string name="partial_delivery_message">يرجى إدخال المبلغ المدفوع</string>
+
+    <string name="ready_for_delivery">جاهز للتسليم</string>
+    <string name="assigned_for_delivery">تم التكليف للتسليم</string>
+    <string name="assigned_for_pickup">تم التكليف للإستلام</string>
+    <string name="out_for_delivery">في الطريق للتسليم</string>
+    <string name="ready_for_pickup">جاهز للإستلام </string>
+    <string name="picked_up">تم الإستلام</string>
+    <string name="delivered">تم التسليم</string>
+    <string name="canceled">تسليم لاغي</string>
+    <string name="at_warehouse">داخل المخزن</string>
+    <string name="cancelled_pickup">إستلام لاغي</string>
+    <string name="postponed">مؤجل</string>
+    <string name="archive">أرشيف</string>
+    <string name="paid_to_vendor">تم الدفع للمورد</string>
+    <string name="ready_for_return">جاهز للإرجاع</string>
+    <string name="assigned_for_return">تم التكليف للإرجاع</string>
+    <string name="out_for_return">في الطريق للإرجاع</string>
+    <string name="returned">تم الإرجاع</string>
+    <string name="unknown">غير معروف</string>
+
+    <string name="hello">مرحبًا,</string>
+    <string name="deliver_shipments">توصيل الشحنات</string>
+    <string name="date">التاريخ:</string>
+    <string name="ship">شحن</string>
+    <string name="status">الحالة</string>
+
+    <string name="customer_name">اسم العميل</string>
+    <string name="area">المنطقة</string>
+
+    <string name="name">الاسم</string>
+    <string name="number">الرقم</string>
+    <string name="number2">الرقم٢</string>
+    <string name="address">العنوان</string>
+    <string name="number_of_items">عدد العناصر</string>
+    <string name="number_of_orders">عدد الطلبات</string>
+    <string name="ready_time">وقت الاستعداد</string>
+    <string name="cash_on_delivery">الدفع عند الاستلام</string>
+    <string name="shipping_fees_cancellation">رسوم الشحن في حالة الإلغاء</string>
+    <string name="fragile">هش</string>
+    <string name="open_package">فتح  الحزمة</string>
+    <string name="partial_delivery">شحنة التسليم الجزئي</string>
+    <string name="deliver_shipment">تسليم الشحنات</string>
+    <string name="receive_shipment">إستلام الشحنات</string>
+    <string name="confirm_receive">تأكيد الإستلام</string>
+    <string name="pick_shipment">Pickup Requests</string>
+    <string name="items_pickup">Delivery Pickup</string>
+    <string name="stock_pickup">Stock Pickup</string>
+    <string name="did_customer_pay_you">هل دفع لك العميل</string>
+    <string name="red_recommendation">توصية Red</string>
+    <string name="items_included">العناصر المتضمنة</string>
+    <string name="orders_included">الطلبات المتضمنة</string>
+    <string name="last_time_available">آخر وقت متاح</string>
+    <string name="size">الحجم</string>
+    <string name="price">السعر</string>
+    <string name="upload_photo">تحميل الصورة</string>
+    <string name="no_reply">بدون رد</string>
+    <string name="postpone">تأجيل</string>
+    <string name="receive_different_price">استلام بسعر مختلف</string>
+    <string name="warehouse">مخزن</string>
+    <string name="are_you_sure">هل انت متأكد ؟</string>
+    <string name="no">لا</string>
+    <string name="yes">نعم</string>
+    <string name="deliver_to_warehouse">تسليم إلى مخزن</string>
+    <string name="vendor_name">اسم المورد</string>
+    <string name="confirm_cash_delivery">تأكيد تسليم النقدية</string>
+    <string name="enter_vendor_code">أدخل الرمز المكون من 4 أرقام من المورد</string>
+    <string name="cancelled_shipments_return">إرجاع الشحنات الملغاة</string>
+    <string name="cash_delivery">تسليم نقدي</string>
+    <string name="confirm_pickup">تأكيد الاستلام</string>
+    <string name="did_you_receive">هل تلقيت</string>
+    <string name="not_ready">غير جاهز</string>
+    <string name="order_cancelled">تم إلغاء الطلب(ات)</string>
+    <string name="quantity">الكمية</string>
+    <string name="total_fees">الرسوم الكلية</string>
+    <string name="content">Content</string>
+    <string name="current_password">كلمة المرور الحالية</string>
+    <string name="new_password">كلمة المرور الجديدة</string>
+    <string name="confirm_new_password">تأكيد كلمة المرور الجديدة</string>
+    <string name="turn_device_location">تشغيل موقع الجهاز</string>
+    <string name="gps_message">التمكين من نظام تحديد المواقع (GPS) غير مفعّل. هل ترغب في الانتقال إلى قائمة الإعدادات؟</string>
+    <string name="settings">الإعدادات</string>
+    <string name="no_internet_connection">لا يوجد اتصال بالإنترنت</string>
+    <string name="enable_wifi_or_mobile_data">يرجى تمكين Wi-Fi أو بيانات الجوّال للوصول إلى الإنترنت.</string>
+    <string name="select_langauge">اختر اللغة</string>
+    <string name="reset_password">إعادة تعيين كلمة المرور</string>
+    <string name="update_password">تحديث كلمة المرور</string>
+    <string name="error_passwords_do_not_match">كلمات المرور غير متطابقة</string>
+    <string name="error_password_min_length">يجب أن تكون كلمة المرور على الأقل 6 أحرف</string>
+    <!-- عناوين التفضيلات -->
+    <string name="shipment_delivered">تم توصيل الشحنة بنجاح</string>
+    <string name="picked_up_successfully">تم الإستلام بنجاح</string>
+    <string name="error_message">حدث خطأ</string>
+    <string name="of">من</string>
+    <string name="EGP">جنيه</string>
+    <string name="items">عنصر</string>
+    <string name="problem_sent">تم إرسال المشكلة</string>
+
+    <string name="select_shipment">حدد شحنة</string>
+    <string name="select_items">حدد العناصر</string>
+    <string name="no_shipments">لا يوجد شحنات</string>
+
+    <string name="number_of_delivered_items">حدد عدد العناصر المسلمة</string>
+    <string name="number_of_received_fees">اكتب المبلغ المستلم</string>
+
+    <string name="enter_valid_number">ادخل رقم صحيح</string>
+    <string name="customer_address">عنوان العميل</string>
+
+</resources>
