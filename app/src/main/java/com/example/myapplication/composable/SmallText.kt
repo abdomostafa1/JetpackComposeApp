@@ -9,5 +9,5 @@ import com.example.myapplication.R
 
 @Composable
 fun SmallText(text: String,textColor:Color) {
-    Text(text = text, fontSize = 8.sp, fontWeight = FontWeight.Light, color = textColor)
+    Text(text = text, fontSize = 8.sp, fontWeight = FontWeight.Light, color = textColor, maxLines = 1)
 }

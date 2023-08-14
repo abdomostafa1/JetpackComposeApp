@@ -1,4 +1,4 @@
-package com.example.myapplication.composable
+package com.example.myapplication.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.myapplication.R
 import com.example.myapplication.abdo
+import com.example.myapplication.composable.SpacerVertical64
 import com.example.myapplication.ui.theme.LightRed
 import com.example.myapplication.viewmodel.LoggedInUser
 import com.example.myapplication.viewmodel.LoginViewModel
