@@ -28,7 +28,7 @@ class PickupViewModel @Inject constructor(private val listPickupsUseCase: ListPi
     init {
         fetchListPickups()
     }
-    fun fetchListPickups() {
+    private fun fetchListPickups() {
         Log.e(TAG, "viewModel Start ")
 
         viewModelScope.launch(Dispatchers.IO) {
