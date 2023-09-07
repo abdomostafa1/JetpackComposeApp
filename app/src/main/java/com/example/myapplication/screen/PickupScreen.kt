@@ -18,6 +18,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CardDefaults
@@ -84,6 +88,7 @@ private fun PickupContent(
     onClickDocument: (String) -> Unit,
     onClickPickupCard: (Int) -> Unit
 ) {
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -116,47 +121,30 @@ private fun PickupContent(
         Text(
             text = "Date: 13/5/2013",
             fontSize = 16.sp,
-            fontWeight = FontWeight.Bold, modifier = Modifier.padding(start = 8.dp)
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(start = 8.dp)
         )
         Spacer(modifier = Modifier.height(32.dp))
 
-        LazyColumn(contentPadding = PaddingValues(bottom = 16.dp),verticalArrangement = Arrangement.spacedBy(16.dp)) {
-            if (pickups.isNotEmpty())
-            item {
-                BoldText(text = "Lazy Row", textColor = Color.Black)
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            contentPadding = PaddingValues(bottom = 8.dp)
+        ) {
+
+            item (span={
+                GridItemSpan(2)
+            }){
+                BoldText(text = "Abdo mostafa", textColor = Color.Black)
             }
 
-            item {
-                LazyRow (horizontalArrangement = Arrangement.spacedBy(16.dp)){
-                    items(pickups) { item ->
-                        val cardColor = getCardColor(item.statusId)
-                        PickupItem(
-                            pickupRecord = item,
-                            cardColor = CardDefaults.cardColors(Color.Yellow),
-                            context = context,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .clickable { onClickPickupCard(item.pickupRequestId) }
-                                .animateItemPlacement(),
-                            onClickLocation = onClickLocation,
-                            onClickCall = onClickCall,
-                            onClickEmail = onClickEmail,
-                            onClickDocument = onClickDocument
-                        )
-                    }
-                }
-            }
-
-            if (pickups.isNotEmpty())
-            item {
-                BoldText(text = "Lazy Column", textColor = Color.Black)
-            }
             items(items = pickups, key = {
                 it.pickupRequestId
             }) { item: PickupRecord ->
+
                 val cardColor = getCardColor(item.statusId)
-                PickupItem(
-                    pickupRecord = item,
+                PickupItem(pickupRecord = item,
                     cardColor = CardDefaults.cardColors(cardColor),
                     context = context,
                     modifier = Modifier
@@ -166,9 +154,99 @@ private fun PickupContent(
                     onClickLocation = onClickLocation,
                     onClickCall = onClickCall,
                     onClickEmail = onClickEmail,
-                    onClickDocument = onClickDocument
-                )
+                    onClickDocument = onClickDocument)
+
             }
+
         }
     }
+
+//        LazyColumn(
+//            contentPadding = PaddingValues(bottom = 16.dp),
+//            verticalArrangement = Arrangement.spacedBy(16.dp)
+//        ) {
+
+//            item {
+//                LazyRow (horizontalArrangement = Arrangement.spacedBy(16.dp)){
+//                    items(pickups) { item ->
+//                        val cardColor = getCardColor(item.statusId)
+//                        PickupItem(
+//                            pickupRecord = item,
+//                            cardColor = CardDefaults.cardColors(Color.Yellow),
+//                            context = context,
+//                            modifier = Modifier
+//                                .fillMaxWidth()
+//                                .clickable { onClickPickupCard(item.pickupRequestId) }
+//                                .animateItemPlacement(),
+//                            onClickLocation = onClickLocation,
+//                            onClickCall = onClickCall,
+//                            onClickEmail = onClickEmail,
+//                            onClickDocument = onClickDocument
+//                        )
+//                    }
+//                }
+//            }
+
+
+//            if (pickups.isNotEmpty())
+//                stickyHeader(key = -1) {
+//                    BoldText(
+//                        text = "Number 1",
+//                        textColor = Color.Black,
+//                        modifier = stickyHeaderModifier
+//                    )
+//                }
+//
+//            items(items = pickups, key = {
+//                it.pickupRequestId
+//            }) { item: PickupRecord ->
+//                val cardColor = getCardColor(item.statusId)
+//                PickupItem(pickupRecord = item,
+//                    cardColor = CardDefaults.cardColors(cardColor),
+//                    context = context,
+//                    modifier = Modifier
+//                        .fillMaxWidth()
+//                        .clickable { onClickPickupCard(item.pickupRequestId) }
+//                        .animateItemPlacement(),
+//                    onClickLocation = onClickLocation,
+//                    onClickCall = onClickCall,
+//                    onClickEmail = onClickEmail,
+//                    onClickDocument = onClickDocument)
+//            }
+//
+//
+//            if (pickups.isNotEmpty())
+//                stickyHeader(key = -2) {
+//                    BoldText(
+//                        text = "Number 2",
+//                        textColor = Color.Black,
+//                        modifier = stickyHeaderModifier
+//                    )
+//                }
+//
+//            items(items = pickups, key = {
+//                it.pickupRequestId + 1000
+//            }) { item: PickupRecord ->
+//                val cardColor = getCardColor(item.statusId)
+//                PickupItem(
+//                    pickupRecord = item,
+//                    cardColor = CardDefaults.cardColors(cardColor),
+//                    context = context,
+//                    modifier = Modifier
+//                        .fillMaxWidth()
+//                        .clickable { onClickPickupCard(item.pickupRequestId) }
+//                        .animateItemPlacement(),
+//                    onClickLocation = onClickLocation,
+//                    onClickCall = onClickCall,
+//                    onClickEmail = onClickEmail,
+//                    onClickDocument = onClickDocument
+//                )
+//            }
+//        }
+//    }
 }
+
+val stickyHeaderModifier = Modifier
+    .fillMaxWidth()
+    .background(color = Color.White)
+    .padding(bottom = 8.dp)
