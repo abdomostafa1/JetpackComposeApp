@@ -3,6 +3,7 @@ package com.example.myapplication.screen
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
+import com.example.myapplication.NavDestination
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -23,7 +24,9 @@ import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -41,6 +44,7 @@ import com.example.myapplication.data.PickupRecord
 import com.example.myapplication.ui.theme.LightRed
 import com.example.myapplication.viewmodel.PickupViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.example.myapplication.MainActivity
 import com.example.myapplication.composable.BoldText
 import com.example.myapplication.composable.NormalText
@@ -51,13 +55,14 @@ import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 @Composable
 fun PickupScreen(
+    navController: NavController,
     context: Context,
+    pickupViewModel: PickupViewModel,
     onClickLocation: (String) -> Unit,
     onClickCall: (String) -> Unit,
     onClickEmail: (String) -> Unit,
     onClickDocument: (String) -> Unit
 ) {
-    val pickupViewModel: PickupViewModel = viewModel()
     val state by pickupViewModel.pickupsList.collectAsState()
 
     PickupContent(
@@ -67,7 +72,8 @@ fun PickupScreen(
         onClickCall = onClickCall,
         onClickEmail = onClickEmail,
         onClickDocument = onClickDocument,
-        onClickPickupCard = pickupViewModel::onClickPickupCard
+        onClickPickupCard = { id -> navController.navigate("PickupDetailsScreen/$id") },
+        onClickGo = { navController.navigate(NavDestination.pickupDetailsScreen) }
     )
 }
 
@@ -86,7 +92,8 @@ private fun PickupContent(
     onClickCall: (String) -> Unit,
     onClickEmail: (String) -> Unit,
     onClickDocument: (String) -> Unit,
-    onClickPickupCard: (Int) -> Unit
+    onClickPickupCard: (Int) -> Unit,
+    onClickGo: () -> Unit
 ) {
 
     Column(
@@ -133,11 +140,6 @@ private fun PickupContent(
             contentPadding = PaddingValues(bottom = 8.dp)
         ) {
 
-            item (span={
-                GridItemSpan(2)
-            }){
-                BoldText(text = "Abdo mostafa", textColor = Color.Black)
-            }
 
             items(items = pickups, key = {
                 it.pickupRequestId

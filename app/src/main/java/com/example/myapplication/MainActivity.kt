@@ -16,8 +16,18 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavArgument
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.example.myapplication.screen.PickupDetailsScreen
 import com.example.myapplication.screen.PickupScreen
+import com.example.myapplication.screen.ThirdScreen
 import com.example.myapplication.ui.theme.MyApplicationTheme
+import com.example.myapplication.viewmodel.PickupViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -33,15 +43,38 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
-                    PickupScreen(
-                        context = this,
-                        onClickLocation =onClickButtonLocation,
-                        onClickCall =onClickButtonCall,
-                        onClickEmail =onClickButtonEmail,
-                        onClickDocument =onClickButtonDocument
-                    )
+                    val navController = rememberNavController()
+                    val pickupViewModel = viewModel<PickupViewModel>()
+                    val navHost =
+                        NavHost(
+                            navController = navController,
+                            startDestination = NavDestination.pickupScreen
+                        ) {
+                            composable(NavDestination.pickupScreen) {
+                                PickupScreen(
+                                    navController = navController,
+                                    context = this@MainActivity,
+                                    pickupViewModel = pickupViewModel,
+                                    onClickLocation = onClickButtonLocation,
+                                    onClickCall = onClickButtonCall,
+                                    onClickEmail = onClickButtonEmail,
+                                    onClickDocument = onClickButtonDocument
+                                )
+                            }
+
+                            composable(
+                                "PickupDetailsScreen/{id}",
+                                arguments = listOf(navArgument("id"){ type= NavType.IntType})
+                            ) { backStackEntry ->
+                                PickupDetailsScreen(
+                                    navController,
+                                    checkNotNull(backStackEntry.arguments?.getInt("id", 0))
+                                )
+                            }
+                            composable(NavDestination.thirdScreen) { ThirdScreen(navController) }
+                        }
+
                 }
-                Toast(this@MainActivity).showLongToast(this@MainActivity, "ana abdo mostafa")
             }
         }
     }
