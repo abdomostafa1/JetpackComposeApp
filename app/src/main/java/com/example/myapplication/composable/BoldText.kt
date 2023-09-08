@@ -10,7 +10,7 @@ import androidx.compose.ui.unit.sp
 import com.example.myapplication.R
 
 @Composable
-fun BoldText(text: String, textColor: Color,modifier: Modifier=Modifier) {
+fun BoldText(text: String, textColor: Color=Color.Black,modifier: Modifier=Modifier) {
     Text(
         text = text,
         fontSize = 18.sp,
