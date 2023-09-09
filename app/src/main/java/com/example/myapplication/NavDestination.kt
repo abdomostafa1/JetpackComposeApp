@@ -1,7 +1,8 @@
 package com.example.myapplication
 
 object NavDestination {
-    val pickupScreen="PickupScreen"
-    val pickupDetailsScreen="PickupDetailsScreen"
-    val thirdScreen="ThirdScreen"
+    const val pickupScreen="PickupScreen"
+    const val pickupDetailsScreen="PickupDetailsScreen"
+    const val thirdScreen="ThirdScreen"
+    const val flowLayoutScreen="FlowLayoutScreen"
 }

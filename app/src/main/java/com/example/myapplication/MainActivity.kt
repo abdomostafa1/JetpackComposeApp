@@ -23,6 +23,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.myapplication.screen.FlowLayoutScreen
 import com.example.myapplication.screen.PickupDetailsScreen
 import com.example.myapplication.screen.PickupScreen
 import com.example.myapplication.screen.ThirdScreen
@@ -48,8 +49,10 @@ class MainActivity : ComponentActivity() {
                     val navHost =
                         NavHost(
                             navController = navController,
-                            startDestination = NavDestination.pickupScreen
+                            startDestination = NavDestination.flowLayoutScreen
                         ) {
+
+                            composable(NavDestination.flowLayoutScreen) { FlowLayoutScreen() }
                             composable(NavDestination.pickupScreen) {
                                 PickupScreen(
                                     navController = navController,
@@ -64,7 +67,7 @@ class MainActivity : ComponentActivity() {
 
                             composable(
                                 "PickupDetailsScreen/{id}",
-                                arguments = listOf(navArgument("id"){ type= NavType.IntType})
+                                arguments = listOf(navArgument("id") { type = NavType.IntType })
                             ) { backStackEntry ->
                                 PickupDetailsScreen(
                                     navController,
