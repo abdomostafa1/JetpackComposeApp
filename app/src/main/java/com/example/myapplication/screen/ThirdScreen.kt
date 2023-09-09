@@ -1,6 +1,8 @@
 package com.example.myapplication.screen
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
@@ -22,6 +24,7 @@ fun ThirdScreen(navController: NavController) {
     ThirdContent(onClickBack = { navController.popBackStack(NavDestination.pickupScreen,false) })
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun ThirdContent(onClickBack: () -> Unit) {
 
@@ -52,6 +55,8 @@ private fun ThirdContent(onClickBack: () -> Unit) {
         }) {
             NormalText(text = "back", textColor = Color.White)
         }
+
+
     }
 
 }
