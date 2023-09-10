@@ -5,4 +5,6 @@ object NavDestination {
     const val pickupDetailsScreen="PickupDetailsScreen"
     const val thirdScreen="ThirdScreen"
     const val flowLayoutScreen="FlowLayoutScreen"
+    const val imageViewerScreen="ImageViewerScreen"
+    const val firstScreen="FirstScreen"
 }
