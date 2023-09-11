@@ -28,6 +28,7 @@ import androidx.navigation.navArgument
 import com.example.myapplication.screen.FirstScreen
 import com.example.myapplication.screen.FlowLayoutScreen
 import com.example.myapplication.screen.ImageViewerScreen
+import com.example.myapplication.screen.PagerScreen
 import com.example.myapplication.screen.PickupDetailsScreen
 import com.example.myapplication.screen.PickupScreen
 import com.example.myapplication.screen.ThirdScreen
@@ -65,9 +66,10 @@ class MainActivity : ComponentActivity(), AppStyle {
                 val navHost =
                     NavHost(
                         navController = navController,
-                        startDestination = NavDestination.firstScreen
+                        startDestination = "PagerScreen"
                     ) {
 
+                        composable("PagerScreen") { PagerScreen() }
                         composable(NavDestination.firstScreen) {
                             FirstScreen(
                                 navController,
