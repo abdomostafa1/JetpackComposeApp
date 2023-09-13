@@ -7,4 +7,6 @@ object NavDestination {
     const val flowLayoutScreen="FlowLayoutScreen"
     const val imageViewerScreen="ImageViewerScreen"
     const val firstScreen="FirstScreen"
+    const val counterScreen="CounterScreen"
+    const val pagerScreen="PagerScreen"
 }
