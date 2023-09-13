@@ -1,5 +1,6 @@
 package com.example.myapplication.screen
 
+import android.util.Log
 import androidx.activity.SystemBarStyle
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -9,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -16,9 +18,11 @@ import androidx.navigation.NavHostController
 import com.example.myapplication.R
 import com.example.myapplication.AppStyle
 
+private const val TAG = "ImageViewerScreen"
 @Composable
 fun ImageViewerScreen(navHostController: NavHostController, appStyle: AppStyle) {
 
+    Log.e(TAG, "LocalLifecycleOwner.current=${LocalLifecycleOwner.current} ", )
     ImageViewerContent(onClickBackBtn = { navHostController.popBackStack() })
     appStyle.changeSystemBar(
         statusBarsStyle = SystemBarStyle.dark(Color.Black.toArgb()),
@@ -35,7 +39,9 @@ fun ImageViewerContent(onClickBackBtn: () -> Unit) {
         Image(
             painter = painterResource(id = R.mipmap.app_icon),
             contentDescription = "abdo mostafa",
-            modifier = Modifier.fillMaxSize().constrainAs(image){}
+            modifier = Modifier
+                .fillMaxSize()
+                .constrainAs(image) {}
         )
 
         Icon(

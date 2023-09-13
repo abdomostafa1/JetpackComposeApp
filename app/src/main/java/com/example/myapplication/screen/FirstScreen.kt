@@ -8,12 +8,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
@@ -32,12 +34,21 @@ fun FirstScreen(navController: NavController, appStyle: AppStyle) {
     val showWebViewState = remember {
         mutableStateOf(false)
     }
+    Log.e(TAG, "LocalLifecycleOwner.current=${LocalLifecycleOwner.current} ", )
     appStyle.changeSystemBar(
         statusBarsStyle = SystemBarStyle.light(Color.White.toArgb(), Color.Black.toArgb()),
         navigationBarsStyle = SystemBarStyle.light(Color.White.toArgb(), Color.Black.toArgb())
     )
     FirstContent(showWebView = showWebViewState,
         onClickOpenPhoto = { navController.navigate(NavDestination.imageViewerScreen) })
+
+    DisposableEffect(key1 = "iik" ){
+
+
+        onDispose {
+
+        }
+    }
 }
 
 @SuppressLint("SetJavaScriptEnabled")

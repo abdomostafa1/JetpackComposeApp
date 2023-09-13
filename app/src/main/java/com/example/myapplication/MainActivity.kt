@@ -25,9 +25,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.myapplication.screen.CounterScreen
 import com.example.myapplication.screen.FirstScreen
 import com.example.myapplication.screen.FlowLayoutScreen
 import com.example.myapplication.screen.ImageViewerScreen
+import com.example.myapplication.screen.PagerScreen
 import com.example.myapplication.screen.PickupDetailsScreen
 import com.example.myapplication.screen.PickupScreen
 import com.example.myapplication.screen.ThirdScreen
@@ -56,7 +58,6 @@ class MainActivity : ComponentActivity(), AppStyle {
                     navigationBarStyle = SystemBarStyle.light(
                         Color.White.toArgb(),
                         Color.Gray.toArgb()
-
                     )
                 )
 
@@ -68,6 +69,8 @@ class MainActivity : ComponentActivity(), AppStyle {
                         startDestination = NavDestination.firstScreen
                     ) {
 
+                        composable(NavDestination.counterScreen) { CounterScreen() }
+                        composable("PagerScreen") { PagerScreen() }
                         composable(NavDestination.firstScreen) {
                             FirstScreen(
                                 navController,
