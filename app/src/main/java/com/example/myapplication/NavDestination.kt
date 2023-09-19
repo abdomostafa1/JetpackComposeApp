@@ -9,4 +9,5 @@ object NavDestination {
     const val firstScreen="FirstScreen"
     const val counterScreen="CounterScreen"
     const val pagerScreen="PagerScreen"
+    const val mealsScreen="MealsScreen"
 }

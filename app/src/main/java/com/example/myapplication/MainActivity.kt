@@ -29,6 +29,7 @@ import com.example.myapplication.screen.CounterScreen
 import com.example.myapplication.screen.FirstScreen
 import com.example.myapplication.screen.FlowLayoutScreen
 import com.example.myapplication.screen.ImageViewerScreen
+import com.example.myapplication.screen.MealsScreen
 import com.example.myapplication.screen.PagerScreen
 import com.example.myapplication.screen.PickupDetailsScreen
 import com.example.myapplication.screen.PickupScreen
@@ -66,9 +67,10 @@ class MainActivity : ComponentActivity(), AppStyle {
                 val navHost =
                     NavHost(
                         navController = navController,
-                        startDestination = NavDestination.firstScreen
+                        startDestination = NavDestination.mealsScreen
                     ) {
 
+                        composable(NavDestination.mealsScreen) { MealsScreen() }
                         composable(NavDestination.counterScreen) { CounterScreen() }
                         composable("PagerScreen") { PagerScreen() }
                         composable(NavDestination.firstScreen) {

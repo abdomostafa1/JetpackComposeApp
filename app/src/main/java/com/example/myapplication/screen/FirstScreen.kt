@@ -12,6 +12,7 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.snapshots.Snapshot
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
@@ -58,6 +59,7 @@ private fun FirstContent(showWebView: MutableState<Boolean>, onClickOpenPhoto: (
 
 //    val state = rememberWebViewState(url = "https://www.google.com")
 //    WebView(state = state, modifier = Modifier.fillMaxSize().padding(vertical = 24.dp))
+
 
     Log.e(TAG, "showWebView=${showWebView.value} ")
     ConstraintLayout(
