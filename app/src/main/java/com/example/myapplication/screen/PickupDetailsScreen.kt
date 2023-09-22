@@ -38,7 +38,7 @@ private fun PickupDetailsContent(shipmentId:Int,onClickUpBtn: () -> Unit, onClic
         val (upBtn, pickupDetails, id, next) = createRefs()
         val guideline30 = createGuidelineFromTop(0.30f)
         Icon(
-            painter = painterResource(id = R.drawable.baseline_arrow_back_24),
+            painter = painterResource(id = 0),
             iconTint = Color.Black,
             modifier = Modifier
                 .clickable { onClickUpBtn() }

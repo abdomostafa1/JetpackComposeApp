@@ -17,41 +17,30 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.myapplication.data.PickupRecord
 import com.example.myapplication.ui.theme.LightRed
 import com.example.myapplication.viewmodel.PickupViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.myapplication.MainActivity
 import com.example.myapplication.composable.BoldText
-import com.example.myapplication.composable.NormalText
 import com.example.myapplication.composable.PickupItem
-import com.example.myapplication.composable.SpacerVertical16
+import com.example.myapplication.data.PickupScreenState
 import com.example.myapplication.getCardColor
-import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 @Composable
 fun PickupScreen(
@@ -63,18 +52,57 @@ fun PickupScreen(
     onClickEmail: (String) -> Unit,
     onClickDocument: (String) -> Unit
 ) {
-    val state by pickupViewModel.pickupsList.collectAsState()
+    val state by pickupViewModel.pickupScreenState.collectAsState()
 
-    PickupContent(
-        pickups = state,
-        context = context,
-        onClickLocation = onClickLocation,
-        onClickCall = onClickCall,
-        onClickEmail = onClickEmail,
-        onClickDocument = onClickDocument,
-        onClickPickupCard = { id -> navController.navigate("PickupDetailsScreen/$id") },
-        onClickGo = { navController.navigate(NavDestination.pickupDetailsScreen) }
-    )
+    when (state) {
+        is PickupScreenState.Loading -> {
+            ShowLoadingComposable()
+        }
+
+        is PickupScreenState.Success -> {
+            PickupContent(
+                pickups = (state as PickupScreenState.Success).pickups,
+                context = context,
+                onClickLocation = onClickLocation,
+                onClickCall = onClickCall,
+                onClickEmail = onClickEmail,
+                onClickDocument = onClickDocument,
+                onClickPickupCard = { id -> navController.navigate("PickupDetailsScreen/$id") },
+                onClickGo = { navController.navigate(NavDestination.pickupDetailsScreen) }
+            )
+        }
+
+        else -> {
+            ShowErrorComposable()
+        }
+    }
+
+}
+
+@Composable
+private fun ShowLoadingComposable() {
+    ConstraintLayout(modifier = Modifier.fillMaxSize()) {
+        val loader = createRef()
+        CircularProgressIndicator(modifier = Modifier.constrainAs(loader) {
+            top.linkTo(parent.top)
+            bottom.linkTo(parent.bottom)
+            start.linkTo(parent.start)
+            end.linkTo(parent.end)
+        })
+    }
+}
+
+@Composable
+private fun ShowErrorComposable() {
+    ConstraintLayout(modifier = Modifier.fillMaxSize()) {
+        val loader = createRef()
+        BoldText(text = "Error", modifier = Modifier.constrainAs(loader) {
+            top.linkTo(parent.top)
+            bottom.linkTo(parent.bottom)
+            start.linkTo(parent.start)
+            end.linkTo(parent.end)
+        })
+    }
 }
 
 

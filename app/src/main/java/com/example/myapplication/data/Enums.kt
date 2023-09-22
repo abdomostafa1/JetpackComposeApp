@@ -5,6 +5,16 @@ enum class ProblemStatusEnum(val value: Int){
     NEW_PROBLEM(4)
 }
 
+enum class MyEnumm{
+    ASSIGNED_FOR_DELIVERY("nhh"),
+    ASSIGNED_FOR("oojjo");
+    constructor(city:String){
+
+    }
+
+}
+
+
 enum class OrderStatusENum(val value: Int) {
     //FILTER ORDERS LIST
     READY_FOR_DELIVERY(1),
