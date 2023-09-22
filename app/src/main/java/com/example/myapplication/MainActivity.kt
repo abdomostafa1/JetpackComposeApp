@@ -33,14 +33,17 @@ import com.example.myapplication.screen.MealsScreen
 import com.example.myapplication.screen.PagerScreen
 import com.example.myapplication.screen.PickupDetailsScreen
 import com.example.myapplication.screen.PickupScreen
+import com.example.myapplication.screen.TestScreen
 import com.example.myapplication.screen.ThirdScreen
 import com.example.myapplication.ui.theme.MyApplicationTheme
 import com.example.myapplication.viewmodel.PickupViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+private const val TAG = "MainActivity"
 @AndroidEntryPoint
 class MainActivity : ComponentActivity(), AppStyle {
 
+    var abdo:Abdo?=Abdo()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -67,11 +70,12 @@ class MainActivity : ComponentActivity(), AppStyle {
                 val navHost =
                     NavHost(
                         navController = navController,
-                        startDestination = NavDestination.mealsScreen
+                        startDestination = NavDestination.pickupScreen
                     ) {
 
                         composable(NavDestination.mealsScreen) { MealsScreen() }
                         composable(NavDestination.counterScreen) { CounterScreen() }
+                        composable(NavDestination.testScreen) { TestScreen() }
                         composable("PagerScreen") { PagerScreen() }
                         composable(NavDestination.firstScreen) {
                             FirstScreen(

@@ -1,7 +1,9 @@
 package com.example.myapplication.screen
 
 import android.util.Log
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -74,17 +76,17 @@ private fun MealsContent(meals: List<FoodMeal>, showFab: MutableState<Boolean>) 
             }
         }
 
-        if (showFab.value) {
-            FloatingActionButton(
-                onClick = { },
-                modifier = Modifier.constrainAs(fab) {
-                    bottom.linkTo(parent.bottom, 56.dp)
-                    end.linkTo(parent.end, 8.dp)
-                }) {
-                Icon(
-                    painter = painterResource(id = R.drawable.baseline_add_24),
-                    iconTint = Color.White
-                )
+        Box(modifier = Modifier.constrainAs(fab) {
+            bottom.linkTo(parent.bottom, 56.dp)
+            end.linkTo(parent.end, 8.dp)
+        }) {
+            AnimatedVisibility(visible = showFab.value) {
+                FloatingActionButton(onClick = { }) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.baseline_add_24),
+                        iconTint = Color.White
+                    )
+                }
             }
         }
 

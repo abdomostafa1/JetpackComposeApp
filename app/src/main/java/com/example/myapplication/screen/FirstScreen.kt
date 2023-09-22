@@ -4,24 +4,33 @@ import android.annotation.SuppressLint
 import android.util.Log
 import androidx.activity.SystemBarStyle
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshots.Snapshot
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
 import com.example.myapplication.AppStyle
 import com.example.myapplication.NavDestination
+import com.example.myapplication.R
 import com.example.myapplication.composable.BoldText
 import com.example.myapplication.composable.NormalText
 import com.google.accompanist.web.WebView
@@ -35,7 +44,7 @@ fun FirstScreen(navController: NavController, appStyle: AppStyle) {
     val showWebViewState = remember {
         mutableStateOf(false)
     }
-    Log.e(TAG, "LocalLifecycleOwner.current=${LocalLifecycleOwner.current} ", )
+    Log.e(TAG, "LocalLifecycleOwner.current=${LocalLifecycleOwner.current} ")
     appStyle.changeSystemBar(
         statusBarsStyle = SystemBarStyle.light(Color.White.toArgb(), Color.Black.toArgb()),
         navigationBarsStyle = SystemBarStyle.light(Color.White.toArgb(), Color.Black.toArgb())
@@ -43,7 +52,7 @@ fun FirstScreen(navController: NavController, appStyle: AppStyle) {
     FirstContent(showWebView = showWebViewState,
         onClickOpenPhoto = { navController.navigate(NavDestination.imageViewerScreen) })
 
-    DisposableEffect(key1 = "iik" ){
+    DisposableEffect(key1 = "iik") {
 
 
         onDispose {

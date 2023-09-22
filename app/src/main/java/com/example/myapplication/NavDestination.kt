@@ -10,4 +10,5 @@ object NavDestination {
     const val counterScreen="CounterScreen"
     const val pagerScreen="PagerScreen"
     const val mealsScreen="MealsScreen"
+    const val testScreen="TestScreen"
 }
