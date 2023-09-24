@@ -3,12 +3,17 @@ package com.example.myapplication
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
+import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,6 +30,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.myapplication.screen.AnimationScreen
 import com.example.myapplication.screen.CounterScreen
 import com.example.myapplication.screen.FirstScreen
 import com.example.myapplication.screen.FlowLayoutScreen
@@ -40,82 +46,97 @@ import com.example.myapplication.viewmodel.PickupViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val TAG = "MainActivity"
+
 @AndroidEntryPoint
 class MainActivity : ComponentActivity(), AppStyle {
 
-    var abdo:Abdo?=Abdo()
+    var abdo: Abdo? = Abdo()
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
         setContent {
             // A surface container using the 'background' color from the theme
-            Surface(
-                modifier = Modifier.fillMaxSize(),
-                color = MaterialTheme.colorScheme.background
-            ) {
+            enableEdgeToEdge(
+                statusBarStyle = SystemBarStyle.dark(Color.Black.toArgb()),
+                navigationBarStyle = SystemBarStyle.dark(Color.Black.toArgb())
+            )
+            Scaffold(modifier = Modifier.background(Color.Black)) { contentPadding ->
 
-                enableEdgeToEdge(
-                    statusBarStyle = SystemBarStyle.light(
-                        Color.White.toArgb(),
-                        Color.Black.toArgb()
-                    ),
-                    navigationBarStyle = SystemBarStyle.light(
-                        Color.White.toArgb(),
-                        Color.Gray.toArgb()
-                    )
-                )
+                Log.e(TAG, "padding values=$contentPadding ")
+                Surface(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(contentPadding),
+                    color = MaterialTheme.colorScheme.background
+                ) {
 
-                val navController = rememberNavController()
-                val pickupViewModel = viewModel<PickupViewModel>()
-                val navHost =
-                    NavHost(
-                        navController = navController,
-                        startDestination = NavDestination.pickupScreen
-                    ) {
+//                enableEdgeToEdge(
+//                    statusBarStyle = SystemBarStyle.light(
+//                        Color.White.toArgb(),
+//                        Color.Black.toArgb()
+//                    ),
+//                    navigationBarStyle = SystemBarStyle.light(
+//                        Color.White.toArgb(),
+//                        Color.Gray.toArgb()
+//                    )
+//                )
 
-                        composable(NavDestination.mealsScreen) { MealsScreen() }
-                        composable(NavDestination.counterScreen) { CounterScreen() }
-                        composable(NavDestination.testScreen) { TestScreen() }
-                        composable("PagerScreen") { PagerScreen() }
-                        composable(NavDestination.firstScreen) {
-                            FirstScreen(
-                                navController,
-                                this@MainActivity
-                            )
+                    val navController = rememberNavController()
+                    val pickupViewModel = viewModel<PickupViewModel>()
+                    val navHost =
+                        NavHost(
+                            navController = navController,
+                            startDestination = NavDestination.animationScreen
+                        ) {
+
+                            composable(NavDestination.animationScreen) { AnimationScreen() }
+                            composable(NavDestination.mealsScreen) { MealsScreen() }
+                            composable(NavDestination.counterScreen) { CounterScreen() }
+                            composable(NavDestination.testScreen) { TestScreen() }
+                            composable("PagerScreen") { PagerScreen() }
+                            composable(NavDestination.firstScreen) {
+                                FirstScreen(
+                                    navController,
+                                    this@MainActivity
+                                )
+                            }
+                            composable(NavDestination.flowLayoutScreen) { FlowLayoutScreen() }
+                            composable(NavDestination.imageViewerScreen) {
+                                ImageViewerScreen(
+                                    navController,
+                                    this@MainActivity
+                                )
+                            }
+                            composable(NavDestination.pickupScreen) {
+                                PickupScreen(
+                                    navController = navController,
+                                    context = this@MainActivity,
+                                    pickupViewModel = pickupViewModel,
+                                    onClickLocation = onClickButtonLocation,
+                                    onClickCall = onClickButtonCall,
+                                    onClickEmail = onClickButtonEmail,
+                                    onClickDocument = onClickButtonDocument
+                                )
+                            }
+
+                            composable(
+                                "PickupDetailsScreen/{id}",
+                                arguments = listOf(navArgument("id") { type = NavType.IntType })
+                            ) { backStackEntry ->
+                                PickupDetailsScreen(
+                                    navController,
+                                    checkNotNull(backStackEntry.arguments?.getInt("id", 0))
+                                )
+                            }
+                            composable(NavDestination.thirdScreen) { ThirdScreen(navController) }
                         }
-                        composable(NavDestination.flowLayoutScreen) { FlowLayoutScreen() }
-                        composable(NavDestination.imageViewerScreen) {
-                            ImageViewerScreen(
-                                navController,
-                                this@MainActivity
-                            )
-                        }
-                        composable(NavDestination.pickupScreen) {
-                            PickupScreen(
-                                navController = navController,
-                                context = this@MainActivity,
-                                pickupViewModel = pickupViewModel,
-                                onClickLocation = onClickButtonLocation,
-                                onClickCall = onClickButtonCall,
-                                onClickEmail = onClickButtonEmail,
-                                onClickDocument = onClickButtonDocument
-                            )
-                        }
 
-                        composable(
-                            "PickupDetailsScreen/{id}",
-                            arguments = listOf(navArgument("id") { type = NavType.IntType })
-                        ) { backStackEntry ->
-                            PickupDetailsScreen(
-                                navController,
-                                checkNotNull(backStackEntry.arguments?.getInt("id", 0))
-                            )
-                        }
-                        composable(NavDestination.thirdScreen) { ThirdScreen(navController) }
-                    }
-
+                }
             }
         }
+
     }
 
     override fun changeSystemBar(

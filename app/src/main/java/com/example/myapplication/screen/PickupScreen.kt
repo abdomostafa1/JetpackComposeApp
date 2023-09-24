@@ -3,6 +3,14 @@ package com.example.myapplication.screen
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.Crossfade
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.expandHorizontally
+import androidx.compose.animation.shrinkHorizontally
+import androidx.compose.animation.togetherWith
+import androidx.compose.animation.with
 import com.example.myapplication.NavDestination
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
@@ -17,9 +25,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -42,6 +52,7 @@ import com.example.myapplication.composable.PickupItem
 import com.example.myapplication.data.PickupScreenState
 import com.example.myapplication.getCardColor
 
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun PickupScreen(
     navController: NavController,
@@ -54,26 +65,52 @@ fun PickupScreen(
 ) {
     val state by pickupViewModel.pickupScreenState.collectAsState()
 
-    when (state) {
-        is PickupScreenState.Loading -> {
-            ShowLoadingComposable()
-        }
 
-        is PickupScreenState.Success -> {
-            PickupContent(
-                pickups = (state as PickupScreenState.Success).pickups,
-                context = context,
-                onClickLocation = onClickLocation,
-                onClickCall = onClickCall,
-                onClickEmail = onClickEmail,
-                onClickDocument = onClickDocument,
-                onClickPickupCard = { id -> navController.navigate("PickupDetailsScreen/$id") },
-                onClickGo = { navController.navigate(NavDestination.pickupDetailsScreen) }
+    if (("plpl"=="okkookok") and ("kskk"=="ssjjk")) {
+        // Do something if the current user is an Admin, or the target user is active
+    }
+    mapOf(
+        Pair("name", "Ahmed"),
+        Pair("age", 24),
+        "city" to "Gize"
+    )
+
+    val color = 0x123456
+    val red = (color xor  0xff0000) shr 16
+
+    AnimatedContent(
+        targetState = state,
+        label = "",
+        transitionSpec = {
+            expandHorizontally(animationSpec = tween(2000)) togetherWith shrinkHorizontally(
+                animationSpec = tween(
+                    1000
+                )
             )
         }
+    ) {
 
-        else -> {
-            ShowErrorComposable()
+        when (it) {
+            is PickupScreenState.Loading -> {
+                ShowLoadingComposable()
+            }
+
+            is PickupScreenState.Success -> {
+                PickupContent(
+                    pickups = (state as PickupScreenState.Success).pickups,
+                    context = context,
+                    onClickLocation = onClickLocation,
+                    onClickCall = onClickCall,
+                    onClickEmail = onClickEmail,
+                    onClickDocument = onClickDocument,
+                    onClickPickupCard = { id -> navController.navigate("PickupDetailsScreen/$id") },
+                    onClickGo = { navController.navigate(NavDestination.pickupDetailsScreen) }
+                )
+            }
+
+            else -> {
+                ShowErrorComposable()
+            }
         }
     }
 
@@ -161,17 +198,13 @@ private fun PickupContent(
         )
         Spacer(modifier = Modifier.height(32.dp))
 
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(8.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
             contentPadding = PaddingValues(bottom = 8.dp)
         ) {
 
-
-            items(items = pickups, key = {
-                it.pickupRequestId
-            }) { item: PickupRecord ->
+            items(items = pickups, key = { item -> item.pickupRequestId }) { item: PickupRecord ->
 
                 val cardColor = getCardColor(item.statusId)
                 PickupItem(pickupRecord = item,
@@ -280,3 +313,8 @@ val stickyHeaderModifier = Modifier
     .fillMaxWidth()
     .background(color = Color.White)
     .padding(bottom = 8.dp)
+
+
+class A<T>{
+
+}
